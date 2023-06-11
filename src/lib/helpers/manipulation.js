@@ -20,3 +20,10 @@ export const waitForElm = (selector) => {
 }
 
 
+export const animate = ({ node, animation, onEnd = function () {} }) => {
+	node.classList.add(animation);
+	node.addEventListener('animationend', function () {
+		node.classList.remove(animation);
+		onEnd(node, animation);
+	}, {once: true});
+}

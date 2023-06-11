@@ -11,3 +11,12 @@ export const scrollToItem = ({itemID, ajaxPageNumber,requestedPageNum}) => {
   }
 }
 
+export const buildQuery = (data) => {
+	return new URLSearchParams(data).toString();
+}
+
+export const getCookie = (cookieName) => {
+	let value = '; ' + document.cookie;
+	let parts = value.split(`; ${cookieName}=`);
+	if (parts.length == 2) return parts.pop().split(';').shift();
+}
